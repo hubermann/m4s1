@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public_folder|images-laempresa|images-servicios|images-slider_servicios|images-productos|images-novedades)
+RewriteRule ^(.+)$ index.php?$1 [L] 
+
+
