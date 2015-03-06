@@ -37,8 +37,9 @@ echo form_hidden('sucursal[id]');
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Mapa</label>
+			<p class="small">Desde maps.google.com, buscar direccion. Luego en la opcion de "share/compartir" elegir la opcion de embed. Pegar codigo aqui.</p>
 			<div class="controls">
-			<input value="<?php echo set_value('mapa'); ?>" class="form-control" type="text" name="mapa" />
+			<textarea name="mapa" id="mapa" cols="30" rows="6" class="form-control" ><?php echo set_value('mapa'); ?></textarea>
 			<?php echo form_error('mapa','<p class="error">', '</p>'); ?>
 			</div>
 			</div>

@@ -8,7 +8,7 @@ if(count($query->result())){
 
 		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
 
-		echo '<tr id="row'.$row->id.'">';
+echo '<tr id="row'.$row->id.'">';
 echo '<td>'.$row->mapa.' </td>';
 echo '<td>'.$row->nombre.' </td>';
 echo '<td>'.$row->localidad.' </td>';

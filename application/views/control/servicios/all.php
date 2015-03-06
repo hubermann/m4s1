@@ -10,7 +10,7 @@ if(count($query->result())){
 
 		echo '<tr id="row'.$row->id.'">';
 echo '<td>'.$row->nombre.' </td>';
-echo '<td>'.$row->filename.' </td>';
+#echo '<td>'.$row->filename.' </td>';
 
 		if($row->filename){
 		echo '<td><img src="'.base_url('images-servicios/'.$row->filename).'" width="100" /></td>';

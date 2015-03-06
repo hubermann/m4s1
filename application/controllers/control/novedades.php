@@ -41,7 +41,7 @@ public function index(){
 	}
 	//End Pagination
 
-	$data['title'] = 'novedades';
+	$data['title'] = 'Novedades';
 	$data['menu'] = 'control/novedades/menu_novedad';
 	$data['content'] = 'control/novedades/all';
 	$data['query'] = $this->novedad->get_records($per_page,$start);
@@ -53,7 +53,7 @@ public function index(){
 //detail
 public function detail(){
 	$this->permiso->verify_access( 'novedades', 'view');
-	$data['title'] = 'novedad';
+	$data['title'] = 'Novedad';
 	$data['content'] = 'control/novedades/detail';
 	$data['menu'] = 'control/novedades/menu_novedad';
 	$data['query'] = $this->novedad->get_record($this->uri->segment(4));
@@ -65,7 +65,7 @@ public function detail(){
 public function form_new(){
 	$this->permiso->verify_access( 'novedades', 'create');
 	$this->load->helper('form');
-	$data['title'] = 'Nuevo novedad';
+	$data['title'] = 'Nueva novedad';
 	$data['content'] = 'control/novedades/new_novedad';
 	$data['menu'] = 'control/novedades/menu_novedad';
 	$this->load->view('control/control_layout', $data);
@@ -82,29 +82,30 @@ $this->form_validation->set_rules('titulo', 'Titulo', 'required');
 
 $this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
 
-$this->form_validation->set_rules('tags', 'Tags', 'required');
-
-$this->form_validation->set_rules('slug', 'Slug', 'required');
-
 	$this->form_validation->set_message('required','El campo %s es requerido.');
 
 if ($this->form_validation->run() === FALSE){
 
 		$this->load->helper('form');
-		$data['title'] = 'Nuevo novedades';
+		$data['title'] = 'Nueva novedad';
 		$data['content'] = 'control/novedades/new_novedad';
 		$data['menu'] = 'control/novedades/menu_novedad';
 		$this->load->view('control/control_layout', $data);
 
 	}else{
-		/*
+
+		$ahora = date("Y-m-d");
+		
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
-		*/$newnovedad = array( 'fecha' => $this->input->post('fecha'), 
+		$newnovedad = array( 
+		'fecha' => $this->input->post('fecha'), 
+		'created_at' => $ahora, 
+		'updated_at' => $ahora, 
  'titulo' => $this->input->post('titulo'), 
  'descripcion' => $this->input->post('descripcion'), 
  'tags' => $this->input->post('tags'), 
- 'slug' => $this->input->post('slug'), 
+ 'slug' => $slug, 
 );
 		#save
 		$this->novedad->add_record($newnovedad);
@@ -138,9 +139,9 @@ $this->form_validation->set_rules('titulo', 'Titulo', 'required');
 
 $this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
 
-$this->form_validation->set_rules('tags', 'Tags', 'required');
 
-$this->form_validation->set_rules('slug', 'Slug', 'required');
+
+
 
 
 	$this->form_validation->set_message('required','El campo %s es requerido.');
@@ -148,15 +149,19 @@ $this->form_validation->set_rules('slug', 'Slug', 'required');
 	if ($this->form_validation->run() === FALSE){
 		$this->load->helper('form');
 
-		$data['title'] = 'Nuevo novedad';
+		$data['title'] = 'Nueva novedad';
 		$data['content'] = 'control/novedades/edit_novedad';
 		$data['menu'] = 'control/novedades/menu_novedad';
 		$data['query'] = $this->novedad->get_record($this->input->post('id'));
 		$this->load->view('control/control_layout', $data);
-	}else{		
-		$id=  $this->input->post('id');
+	}else{	
 
+	$this->load->helper('url');
+		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);	
+		$id=  $this->input->post('id');
+		$ahora = date("Y-m-d h:i:s");
 		$editednovedad = array(  
+			'updated_at' => $ahora, 
 'fecha' => $this->input->post('fecha'),
 
 'titulo' => $this->input->post('titulo'),
@@ -165,7 +170,7 @@ $this->form_validation->set_rules('slug', 'Slug', 'required');
 
 'tags' => $this->input->post('tags'),
 
-'slug' => $this->input->post('slug'),
+'slug' => $slug,
 );
 		#save
 		$this->session->set_flashdata('success', 'novedad Actualizado!');

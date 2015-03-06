@@ -8,10 +8,10 @@ if($this->uri->segment(2)=="novedades"){
 <li class="treeview active">
 <a href="#">
 <i class="fa fa-bar-chart-o"></i>
-<span>novedades</span></a>
+<span>Novedades</span></a>
 <i class="fa fa-angle-left pull-right"></i>
 <ul class="treeview-menu">
-<li><a href="'.base_url('control/novedades').'"><i class="fa fa-angle-double-right"></i> Ver Todos</a></li>
+<li><a href="'.base_url('control/novedades').'"><i class="fa fa-angle-double-right"></i> Ver Todas</a></li>
 <li><a href="'.base_url('control/novedades/form_new').'"><i class="fa fa-angle-double-right"></i> Crear nueva</a></li>
 </ul>
 </li>
@@ -20,7 +20,7 @@ if($this->uri->segment(2)=="novedades"){
 	echo '
 	<li>
         <a href="'.base_url('control/novedades').'">
-            <i class="fa fa-dashboard"></i> <span>novedades</span>
+            <i class="fa fa-dashboard"></i> <span>Novedades</span>
         </a>
     </li>
 	';
@@ -46,7 +46,7 @@ if($this->uri->segment(2)=="laempresa"){
 	echo '
 	<li>
         <a href="'.base_url('control/laempresa').'">
-            <i class="fa fa-dashboard"></i> <span>laempresa</span>
+            <i class="fa fa-dashboard"></i> <span>La empresa</span>
         </a>
     </li>
 	';
@@ -59,7 +59,7 @@ if($this->uri->segment(2)=="servicios"){
 <li class="treeview active">
 <a href="#">
 <i class="fa fa-bar-chart-o"></i>
-<span>servicios</span></a>
+<span>Servicios</span></a>
 <i class="fa fa-angle-left pull-right"></i>
 <ul class="treeview-menu">
 <li><a href="'.base_url('control/servicios').'"><i class="fa fa-angle-double-right"></i> Ver Todos</a></li>
@@ -71,7 +71,7 @@ if($this->uri->segment(2)=="servicios"){
 	echo '
 	<li>
         <a href="'.base_url('control/servicios').'">
-            <i class="fa fa-dashboard"></i> <span>servicios</span>
+            <i class="fa fa-dashboard"></i> <span>Servicios</span>
         </a>
     </li>
 	';
@@ -84,7 +84,7 @@ if($this->uri->segment(2)=="sucursales"){
 <li class="treeview active">
 <a href="#">
 <i class="fa fa-bar-chart-o"></i>
-<span>sucursales</span></a>
+<span>Sucursales</span></a>
 <i class="fa fa-angle-left pull-right"></i>
 <ul class="treeview-menu">
 <li><a href="'.base_url('control/sucursales').'"><i class="fa fa-angle-double-right"></i> Ver Todos</a></li>
@@ -96,7 +96,7 @@ if($this->uri->segment(2)=="sucursales"){
 	echo '
 	<li>
         <a href="'.base_url('control/sucursales').'">
-            <i class="fa fa-dashboard"></i> <span>sucursales</span>
+            <i class="fa fa-dashboard"></i> <span>Sucursales</span>
         </a>
     </li>
 	';
@@ -109,7 +109,7 @@ if($this->uri->segment(2)=="capacitaciones"){
 <li class="treeview active">
 <a href="#">
 <i class="fa fa-bar-chart-o"></i>
-<span>capacitaciones</span></a>
+<span>Capacitaciones</span></a>
 <i class="fa fa-angle-left pull-right"></i>
 <ul class="treeview-menu">
 <li><a href="'.base_url('control/capacitaciones').'"><i class="fa fa-angle-double-right"></i> Ver Todos</a></li>
@@ -121,7 +121,7 @@ if($this->uri->segment(2)=="capacitaciones"){
 	echo '
 	<li>
         <a href="'.base_url('control/capacitaciones').'">
-            <i class="fa fa-dashboard"></i> <span>capacitaciones</span>
+            <i class="fa fa-dashboard"></i> <span>Capacitaciones</span>
         </a>
     </li>
 	';
@@ -136,7 +136,7 @@ if($this->uri->segment(2)=="productos"){
 <li class="treeview active">
 <a href="#">
 <i class="fa fa-bar-chart-o"></i>
-<span>productos</span></a>
+<span>Productos</span></a>
 <i class="fa fa-angle-left pull-right"></i>
 <ul class="treeview-menu">
 <li><a href="'.base_url('control/productos').'"><i class="fa fa-angle-double-right"></i> Ver Todas</a></li>
@@ -148,7 +148,7 @@ if($this->uri->segment(2)=="productos"){
 	echo '
 	<li>
         <a href="'.base_url('control/productos').'">
-            <i class="fa fa-dashboard"></i> <span>productos</span>
+            <i class="fa fa-dashboard"></i> <span>Productos</span>
         </a>
     </li>
 	';

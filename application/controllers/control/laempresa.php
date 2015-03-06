@@ -23,7 +23,7 @@ redirect('dashboard');
 public function index(){
 	$this->permiso->verify_access( 'laempresa', 'edit');
 	$this->load->helper('form');
-	$data['title']= 'Editar laempresa';	
+	$data['title']= 'Modificar "La empresa"';	
 	$data['content'] = 'control/laempresa/edit_laempresa';
 	$data['menu'] = 'control/laempresa/menu_laempresa';
 	$data['query'] = $this->laempresam->get_record(1);
@@ -59,17 +59,18 @@ public function create(){
 	$this->load->library('form_validation');
 $this->form_validation->set_rules('titulo', 'Titulo', 'required');
 
-$this->form_validation->set_rules('texto_principal', 'Texto_principal', 'required');
+$this->form_validation->set_rules('texto_principal', 'Texto principal', 'required');
 
-$this->form_validation->set_rules('texto_secundario', 'Texto_secundario', 'required');
+$this->form_validation->set_rules('titulo_secundario', 'Titulo secundario', 'required');
+$this->form_validation->set_rules('texto_secundario', 'Texto secundario', 'required');
 
-$this->form_validation->set_rules('titulo_texto1', 'Titulo_texto1', 'required');
+$this->form_validation->set_rules('titulo_texto1', 'Titulo recuadro 1', 'required');
 
-$this->form_validation->set_rules('texto1', 'Texto1', 'required');
+$this->form_validation->set_rules('texto1', 'Texto recuadro 1', 'required');
 
-$this->form_validation->set_rules('titulo_texto2', 'Titulo_texto2', 'required');
+$this->form_validation->set_rules('titulo_texto2', 'Titulo recuadro 2 ', 'required');
 
-$this->form_validation->set_rules('texto2', 'Texto2', 'required');
+$this->form_validation->set_rules('texto2', 'Texto recuadro 2', 'required');
 
 	$this->form_validation->set_message('required','El campo %s es requerido.');
 
@@ -85,14 +86,16 @@ if ($this->form_validation->run() === FALSE){
 		/*
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
-		*/$newlaempresa = array( 'titulo' => $this->input->post('titulo'), 
- 'texto_principal' => $this->input->post('texto_principal'), 
- 'texto_secundario' => $this->input->post('texto_secundario'), 
- 'titulo_texto1' => $this->input->post('titulo_texto1'), 
- 'texto1' => $this->input->post('texto1'), 
- 'titulo_texto2' => $this->input->post('titulo_texto2'), 
- 'texto2' => $this->input->post('texto2'), 
-);
+		*/$newlaempresa = array( 
+		'titulo' => $this->input->post('titulo'), 
+		'texto_principal' => $this->input->post('texto_principal'),
+		'titulo_secundario' => $this->input->post('titulo_secundario'),  
+		'texto_secundario' => $this->input->post('texto_secundario'), 
+		'titulo_texto1' => $this->input->post('titulo_texto1'), 
+		'texto1' => $this->input->post('texto1'), 
+		'titulo_texto2' => $this->input->post('titulo_texto2'), 
+		'texto2' => $this->input->post('texto2'), 
+		);
 		#save
 		$this->laempresam->add_record($newlaempresa);
 		$this->session->set_flashdata('success', 'laempresa creado. <a href="laempresa/detail/'.$this->db->insert_id().'">Ver</a>');
@@ -108,7 +111,7 @@ if ($this->form_validation->run() === FALSE){
 public function editar(){
 	$this->permiso->verify_access( 'laempresa', 'edit');
 	$this->load->helper('form');
-	$data['title']= 'Editar laempresa';	
+	$data['title']= 'Modificar "La empresa"';	
 	$data['content'] = 'control/laempresa/edit_laempresa';
 	$data['menu'] = 'control/laempresa/menu_laempresa';
 	$data['query'] = $this->laempresam->get_record($this->uri->segment(4));
@@ -122,6 +125,8 @@ public function update(){
 $this->form_validation->set_rules('titulo', 'Titulo', 'required');
 
 $this->form_validation->set_rules('texto_principal', 'Texto_principal', 'required');
+
+$this->form_validation->set_rules('titulo_secundario', 'Titulo secundario', 'required');
 
 $this->form_validation->set_rules('texto_secundario', 'Texto_secundario', 'required');
 
@@ -139,7 +144,7 @@ $this->form_validation->set_rules('texto2', 'Texto2', 'required');
 	if ($this->form_validation->run() === FALSE){
 		$this->load->helper('form');
 
-		$data['title'] = 'Nuevo laempresa';
+		$data['title'] = 'Modificar "La empresa"';
 		$data['content'] = 'control/laempresa/edit_laempresa';
 		$data['menu'] = 'control/laempresa/menu_laempresa';
 		$data['query'] = $this->laempresam->get_record($this->input->post('id'));
@@ -151,7 +156,7 @@ $this->form_validation->set_rules('texto2', 'Texto2', 'required');
 'titulo' => $this->input->post('titulo'),
 
 'texto_principal' => $this->input->post('texto_principal'),
-
+'titulo_secundario' => $this->input->post('titulo_secundario'),  
 'texto_secundario' => $this->input->post('texto_secundario'),
 
 'titulo_texto1' => $this->input->post('titulo_texto1'),

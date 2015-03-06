@@ -5,7 +5,7 @@ function confirma_eliminar(idvar, urldel) {
 	if (result==true) {
     	//Confirmada la eliminacion de la img
     	$.ajax({
-    	    url: "/control/productos/delete_imagen/"+idvar,
+    	    url: "<?php echo base_url('/control/productos/delete_imagen'); ?>/"+idvar,
     	    context: document.body,
     	    success: function(data){
     	      //wrapper del thumbnail

@@ -3,6 +3,7 @@ $attributes = array('class' => 'form-horizontal', 'id' => 'edit_novedad');
 echo form_open_multipart(base_url('control/novedades/update/'),$attributes);
 
 echo form_hidden('id', $query->id); 
+
 ?>
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
@@ -67,14 +68,7 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('tags','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Slug</label>
-			<div class="controls">
-			<input value="<?php echo $query->slug; ?>" type="text" class="form-control" name="slug" />
-			<?php echo form_error('slug','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+			
 
 <div class="control-group">
 <label class="control-label"></label>

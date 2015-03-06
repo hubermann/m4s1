@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `capacitaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL,
   `fecha` date NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_laempresa` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `laempresa_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_novedades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `novedad_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `producto_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_slider_servicios` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `slider_servicio_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `imagenes_slider_servicios` (
 
 CREATE TABLE IF NOT EXISTS `laempresa` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `titulo` varchar(255) NOT NULL,
@@ -161,7 +161,7 @@ INSERT INTO `modulos` (`id`, `nombre`) VALUES
 
 CREATE TABLE IF NOT EXISTS `novedades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `titulo` varchar(255) NOT NULL,
@@ -201,16 +201,22 @@ INSERT INTO `permisos` (`id`, `status`, `role_id`, `modulo`, `url`, `permiso`) V
 --
 
 CREATE TABLE IF NOT EXISTS `productos` (
-  `id` int(11) NOT NULL,
-  `status` int(1) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
   `tags` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+
+
+
+
+
+
 
 -- --------------------------------------------------------
 
@@ -220,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
@@ -240,7 +246,7 @@ INSERT INTO `roles` (`id`, `status`, `nombre`) VALUES
 
 CREATE TABLE IF NOT EXISTS `servicios` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -256,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `servicios` (
 
 CREATE TABLE IF NOT EXISTS `slider_servicios` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `nombre_imagen` varchar(255) NOT NULL,
@@ -271,9 +277,8 @@ CREATE TABLE IF NOT EXISTS `slider_servicios` (
 
 CREATE TABLE IF NOT EXISTS `sucursales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` int(1) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL,
   `mapa` text NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `localidad` varchar(255) NOT NULL,

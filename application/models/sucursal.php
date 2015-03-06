@@ -8,8 +8,8 @@ class Sucursal extends CI_Model{
 
 	}
 	//all
-	public function get_records($num,$start){
-		$this->db->select()->from('sucursales')->where('status', 0)->order_by('id','ASC')->limit($num,$start);
+	public function get_records(){
+		$this->db->select()->from('sucursales')->where('status', 0)->limit(3);
 		return $this->db->get();
 
 	}

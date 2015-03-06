@@ -66,14 +66,7 @@ echo form_hidden('novedad[id]');
 			<?php echo form_error('tags','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Slug</label>
-			<div class="controls">
-			<input value="<?php echo set_value('slug'); ?>" class="form-control" type="text" name="slug" />
-			<?php echo form_error('slug','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+			
 
 <div class="control-group">
 <label class="control-label"></label>
@@ -89,3 +82,9 @@ echo form_hidden('novedad[id]');
 <?php echo form_close(); ?>
 
 </div>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'descripcion');
+
+
+</script>

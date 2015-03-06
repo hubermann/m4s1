@@ -19,14 +19,7 @@ class Migration_Create_Sucursales extends CI_Migration
                     "constraint"          =>        1,
  
                 ),
-                "created_at"          =>        array(
-                    "type"                =>        "DATETIME",
-                ),
-
-                "updated_at"          =>        array(
-                    "type"                =>        "DATETIME",
-
-                ),
+               
 		"mapa"    		=>        array(
                     "type"                =>        "TEXT",
                     "constraint"        	=>        100,

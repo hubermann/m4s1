@@ -8,8 +8,8 @@ class Servicio extends CI_Model{
 
 	}
 	//all
-	public function get_records($num,$start){
-		$this->db->select()->from('servicios')->where('status', 0)->order_by('id','ASC')->limit($num,$start);
+	public function get_records($limit){
+		$this->db->select()->from('servicios')->where('status', 0)->order_by('nombre','ASC')->limit($limit);
 		return $this->db->get();
 
 	}

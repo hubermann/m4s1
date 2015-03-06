@@ -50,14 +50,33 @@ echo form_hidden('producto[id]');
 			<?php echo form_error('descripcion','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
+			<!-- Text input
 			<div class="control-group">
 			<label class="control-label">Tags</label>
 			<div class="controls">
 			<input value="<?php echo set_value('tags'); ?>" class="form-control" type="text" name="tags" />
 			<?php echo form_error('tags','<p class="error">', '</p>'); ?>
 			</div>
+			</div> -->
+
+
+			<!-- Text input-->
+			<div class="control-group">
+				<label class="control-label">Adjunto</label>
+				<div class="controls">
+				<input value="<?php echo set_value('adjunto'); ?>" type="file" class="form-control" name="adjunto" />
+				<?php echo form_error('adjunto','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
+
+			
+
+			<!-- Text input-->
+			<div class="checkbox">
+		    <label>
+		      <input type="checkbox" name="destacado" > Producto Destacado
+		    </label>
+		  	</div>
 
 <div class="control-group">
 <label class="control-label"></label>

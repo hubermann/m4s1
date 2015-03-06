@@ -103,10 +103,12 @@ if ($this->form_validation->run() === FALSE){
 		$this->load->view('control/control_layout', $data);
 
 	}else{
+
 		/*
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
-		*/$newsucursal = array( 'mapa' => $this->input->post('mapa'), 
+		*/$newsucursal = array( 
+		'mapa' => $this->input->post('mapa'), 
  'nombre' => $this->input->post('nombre'), 
  'localidad' => $this->input->post('localidad'), 
  'direccion' => $this->input->post('direccion'), 

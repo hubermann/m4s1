@@ -9,9 +9,9 @@ if(count($query->result())){
 		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
 
 		echo '<tr id="row'.$row->id.'">';
-echo '<td>'.$row->titulo.' </td>';
-echo '<td>'.$row->descripcion.' </td>';
-echo '<td>'.$row->tags.' </td>';
+        echo '<td>'.$row->titulo.' </td>';
+        echo '<td>'.$row->descripcion.' </td>';
+        #echo '<td>'.$row->tags.' </td>';
 
 		echo '</td>';
 

@@ -22,6 +22,7 @@
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> 
+        <script src="<?php echo base_url('public_folder/ckeditor/ckeditor.js'); ?>"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -323,7 +324,27 @@
                     </ol>
                 </section>
                 
-                <div id="avisos"></div>
+                <div id="avisos">
+    <?php
+
+      if($this->session->flashdata('success')):
+      echo '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+      '.$this->session->flashdata('success').'</div>';
+      endif;
+
+      if($this->session->flashdata('warning')):
+      echo '<div class="alert alert-warning"  role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+      '.$this->session->flashdata('warning').'</div>';
+      endif;
+
+      if($this->session->flashdata('error')):
+      echo '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+      '.$this->session->flashdata('error').'</div>';
+      endif;
+
+    ?>
+
+    </div>
 
                 <!-- Main content -->
                 <section class="content">
@@ -375,9 +396,9 @@
             });
         </script>
         <script>
-        window.setTimeout(function() { $(".alert-success").alert('close'); }, 4000);
-        window.setTimeout(function() { $(".alert-warning").alert('close'); }, 4000);
-        window.setTimeout(function() { $(".alert-danger").alert('close'); }, 4000);
+        window.setTimeout(function() { $(".alert-success").alert('close'); }, 6000);
+        window.setTimeout(function() { $(".alert-warning").alert('close'); }, 6000);
+        window.setTimeout(function() { $(".alert-danger").alert('close'); }, 6000);
         $('#fecha_desde').datepicker({
           format: 'dd-mm-yyyy',
         });

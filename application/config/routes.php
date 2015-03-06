@@ -17,6 +17,19 @@ $route['control/capacitaciones/(:num)'] = 'control/capacitaciones/index/$';
 $route['control/novedades/(:num)'] = 'control/novedades/index/$';
 
 
+
+###### FRONT ######
+$route['la-empresa'] = 'welcome/la_empresa';
+$route['grupo-de-productos'] = 'welcome/grupo_productos';
+$route['servicios'] = 'welcome/servicios';
+$route['detalle_servicio'] = 'welcome/detalle_servicio';
+$route['producto-detalle/(:num)'] = 'welcome/producto_detalle';
+$route['novedades'] = 'welcome/novedades';
+$route['novedades_detalle'] = 'welcome/novedades_detalle';
+$route['sucursales'] = 'welcome/sucursales';
+
+
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING

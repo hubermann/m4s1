@@ -19,6 +19,9 @@ class Migration_Create_Novedades extends CI_Migration
                     "constraint"          =>        1,
  
                 ),
+                "fecha"          =>        array(
+                    "type"                =>        "DATETIME",
+                ),
                 "created_at"          =>        array(
                     "type"                =>        "DATETIME",
                 ),

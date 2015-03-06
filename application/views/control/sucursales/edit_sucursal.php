@@ -38,6 +38,7 @@ echo form_hidden('id', $query->id);
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Mapa</label>
+			<p class="small">Desde maps.google.com buscar direccion. Luego en la opcion de "share/compartir" elegir la opcion de embed. Pegar codigo aqui.</p>
 			<div class="controls">
 			<textarea name="mapa" id="" class="form-control" cols="30" rows="5"><?php echo $query->mapa; ?></textarea>
 			<?php echo form_error('mapa','<p class="error">', '</p>'); ?>
