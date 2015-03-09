@@ -8,7 +8,8 @@
 	reader.readAsDataURL(input.files[0]);
 	}
 }
-</script><?php  
+</script>
+<?php  
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_servicio');
 echo form_open_multipart(base_url('control/servicios/create/'),$attributes);
@@ -52,9 +53,9 @@ echo form_hidden('servicio[id]');
 			<?php echo form_error('nombre','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-	<!-- Text input-->
+<!-- Text input-->
 <div class="control-group">
-	<label class="control-label">Imagen</label>
+	<label class="control-label">Icono</label>
 	<div class="controls">
 	<div id="previewImg"></div>
 	<input value="<?php echo set_value('filename'); ?>" type="file" class="form-control" name="filename" onchange="show_preview(this)"/>

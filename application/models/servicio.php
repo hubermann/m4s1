@@ -8,10 +8,15 @@ class Servicio extends CI_Model{
 
 	}
 	//all
-	public function get_records($limit){
-		$this->db->select()->from('servicios')->where('status', 0)->order_by('nombre','ASC')->limit($limit);
+	public function get_records($num,$start){
+		$this->db->select()->from('servicios')->where('status', 0)->order_by('id','ASC')->limit($num,$start);
 		return $this->db->get();
 
+	}
+
+	public function get_records_front(){
+		$this->db->select()->from('servicios')->where('status', 0)->order_by('nombre','ASC')->limit(7);
+		return $this->db->get();
 	}
 
 	//detail
@@ -32,39 +37,41 @@ class Servicio extends CI_Model{
 
 
 
-		//add new
-		public function add_record($data){ $this->db->insert('servicios', $data);
-				
-
+	//add new
+	public function add_record($data){ 
+		$this->db->insert('servicios', $data);
 	}
 
 
-		//update
-		public function update_record($id, $data){
+	//update
+	public function update_record($id, $data){
 
-			$this->db->where('id', $id);
+		$this->db->where('id', $id);
+		$this->db->update('servicios', $data);
+
+	}
+	public function update_main($id_servicio,$data){
+			$this->db->where('id', $id_servicio);
 			$this->db->update('servicios', $data);
-
 		}
 
-		//destroy
-		public function delete_record(){
+	//destroy
+	public function delete_record(){
+		$this->db->where('id', $this->uri->segment(4));
+		$this->db->delete('servicios');
+	}
 
-			$this->db->where('id', $this->uri->segment(4));
-			$this->db->delete('servicios');
-		}
 
+	
+	public function traer_principal($id){
+		$this->db->where('id' ,$id);
+		$this->db->limit(1);
+		$c = $this->db->get('servicios');
 
-		/*
-		public function traer_nombre($id){
-					$this->db->where('servicios_categoria_id' ,$id);
-					$this->db->limit(1);
-					$c = $this->db->get('servicios');
-
-					return $c->row('nombre'); 
-				}
-		
-		*/
+		return $c->row('main_image'); 
+	}
+	
+	
 
 }
 

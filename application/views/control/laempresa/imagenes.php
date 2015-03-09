@@ -31,7 +31,8 @@ function confirma_eliminar(idvar, urldel) {
 
     $atts = array('id' => 'form_imagenes', 'class' => "navbar-form navbar-left", 'role'=> 'search');
     echo form_open_multipart(base_url('control/laempresa/add_imagen'), $atts);
-    echo form_hidden('id', $this->uri->segment(4));
+    #echo form_hidden('id', $this->uri->segment(4));
+    echo form_hidden('id', 1); // por que solo se edita uno
     echo '<input type="file" class="form-control" name="adjunto" id="adjunto" />
 
     <button onclick="validateImage();" class="btn btn-default"><span class="glyphicon glyphicon-camera"></span> Agregar Imagen</button>

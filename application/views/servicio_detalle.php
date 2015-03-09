@@ -22,7 +22,7 @@
 
 
 <div class="row">
-	<div class="col-lg-12"><h2>Optimizacion de corte</h2></div>
+	<div class="col-lg-12"><h2 class="orange"><?php echo $servicio->nombre; ?></h2></div>
 </div>
 
 <div class="row">
@@ -38,19 +38,28 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://www.red-eng.com/UI/Images/CaseStudies/Nakheel-1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        
-      </div>
-    </div>
 
-    <div class="item">
-      <img src="http://www.amerondiewelle.com/content/user/29/images/08_PHE/Header%20(1200%20x%20400)/Meeting/phe_meetings_1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        
-      </div>
-    </div>
+	<?php  
+
+	if(!empty($imagenes->result())){
+		$count=1;
+		
+		foreach ($imagenes->result() as $imagen) {
+		if($count==1){$item_active="active";}
+		echo '<div class="item '.$item_active.'">
+		<img src="'.base_url('images-servicios/'.$imagen->filename).'" alt="..." class="responsive">
+		<div class="carousel-caption">
+
+		</div>
+		</div>';
+		$count++;
+		$item_active="";
+		}
+	}
+
+	?>
+
+
     
   </div>
 

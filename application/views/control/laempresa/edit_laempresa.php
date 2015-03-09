@@ -4,6 +4,8 @@ echo form_open_multipart(base_url('control/laempresa/update/'),$attributes);
 
 echo form_hidden('id', 1); 
 ?>
+
+
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
 

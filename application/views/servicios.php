@@ -33,14 +33,23 @@
 <div class="row iconos_servicios">
 <?php 
 
+
 if(!empty($servicios->result())){
 
 	$count = 1;
 	foreach ($servicios->result() as $servicio) {
+
+
+		//si no tiene imagen principal linkeo por el nombre
+		if($servicio->filename==""){
+			$imagen_servicio_nombre='<div class="thumbnail align_center">'.$servicio->nombre.'</div>';
+		}else{
+			$imagen_servicio_nombre ='<img src="'.base_url('images-servicios/'.$servicio->filename).'" alt="" class="img-responsive">';
+		}
 		# code...
 		$servicio_data="";
-		if($servicio->filename !="" ){
-			$servicio_data='<img src="'.base_url('images-servicios/'.$servicio->filename).'" alt="" class="img-responsive">';
+		if($servicio->nombre !="" ){
+			$servicio_data='<a href="'.base_url('servicio/'.$servicio->slug.'/'.$servicio->id).'">'.$imagen_servicio_nombre.'</a>';
 		}
 		echo '
 			<div class="col-lg-3">'.$servicio_data.'</div>

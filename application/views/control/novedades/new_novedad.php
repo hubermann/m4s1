@@ -1,3 +1,15 @@
+<script>
+	function show_preview(input) {
+	if (input.files && input.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function (e) {
+	$('#previewImg').html('<img src="'+e.target.result+'" width="140" />' );
+	}
+	reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
+
 <?php  
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_novedad');
@@ -38,7 +50,7 @@ echo form_hidden('novedad[id]');
 			<div class="control-group">
 			<label class="control-label">Fecha</label>
 			<div class="controls">
-			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" />
+			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" id="fecha" />
 			<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
@@ -59,14 +71,25 @@ echo form_hidden('novedad[id]');
 			</div>
 			</div>
 			<!-- Text input-->
-			<div class="control-group">
+			<!-- <div class="control-group">
 			<label class="control-label">Tags</label>
 			<div class="controls">
 			<input value="<?php echo set_value('tags'); ?>" class="form-control" type="text" name="tags" />
 			<?php echo form_error('tags','<p class="error">', '</p>'); ?>
 			</div>
-			</div>
+			</div> -->
 			
+			<!-- Text input-->
+			<div class="control-group">
+				<label class="control-label">Imagen</label>
+				<div class="controls">
+				<div id="previewImg"></div>
+				<input value="<?php echo set_value('filename'); ?>" type="file" class="form-control" name="filename" onchange="show_preview(this)"/>
+				<?php echo form_error('filename','<p class="error">', '</p>'); ?>
+				</div>
+			</div>
+
+
 
 <div class="control-group">
 <label class="control-label"></label>
@@ -83,8 +106,11 @@ echo form_hidden('novedad[id]');
 
 </div>
 
+
 <script type="text/javascript">
     CKEDITOR.replace( 'descripcion');
-
+	$('#fecha').datepicker({
+      format: 'dd-mm-yyyy',
+    });
 
 </script>

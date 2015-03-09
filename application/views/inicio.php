@@ -60,15 +60,19 @@
 		</div>
 	</div><!-- end titulo Servicios -->
 	<div class="row seven-cols no-gutters"><!-- thumbs Servicios  -->
-			
-				<div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			    <div class="col-md-1"><img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive"></div>
-			
+			<?php  
+        if(!empty($servicios->result())){
+
+          foreach ($servicios->result() as $servicio) {
+            
+            echo '<div class="col-md-1"><a href="'.base_url('servicio/'.$servicio->slug.'/'.$servicio->id).'">
+            <img src="'.base_url('images-servicios/'.$servicio->filename).'" alt="'.$servicio->nombre.'" class="img-responsive"></a></div>';
+          }
+
+        }
+      ?>
+				
+			  
 	     </div><!-- end thumbs Servicios -->
 
 	<div class="row"><!-- slider novedades y productos -->

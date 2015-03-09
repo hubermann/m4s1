@@ -78,7 +78,15 @@ class Imagenes_novedad extends CI_Model{
 			$this->db->delete('imagenes_novedades');
 		}
 		
-		
+		public function traer_una($id){
+
+			$this->db->where('novedad_id' ,$id);
+			$this->db->limit(1);
+			$c = $this->db->get('imagenes_novedades');
+
+			return $c->row('filename'); 
+				
+		}
 
 
 

@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller{
 			$this->session->set_flashdata('error', 'No se encuentran usuario con esos datos.');
 			redirect('dashboard/login', 'refresh');
 		}else{
-			redirect('/control/productos');
+			redirect('/control/novedades');
 		}
 
 	}

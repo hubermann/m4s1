@@ -57,7 +57,7 @@ if($imagenes_producto->result()){
     $clase_para_activo = "";
     if($count_list==1){$clase_para_activo = "active";}//al primerlo lo pongo activo la primera vez}
     $items_slider_list .='<div class="item '.$clase_para_activo.'" id="item_number'.$count_list.'">
-      <img src="'.base_url('images-productos/'.$imagen_producto->filename).'" alt="image" class="responsive">
+      <img src="'.base_url('images-productos/'.$imagen_producto->filename).'" alt="image" class="responsive" width="100%">
       <div class="carousel-caption">
         
       </div>

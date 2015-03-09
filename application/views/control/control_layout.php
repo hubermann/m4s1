@@ -17,12 +17,15 @@
 
         <!-- WP admin menu style -->
         <link rel="stylesheet" href="<?php echo base_url('public_folder/css/admin-menu.css'); ?>">
+         <link rel="stylesheet" href="<?php echo base_url('public_folder/css/datepicker.css'); ?>">
 
         <link rel="stylesheet" href="<?php echo base_url('public_folder/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>">
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> 
         <script src="<?php echo base_url('public_folder/ckeditor/ckeditor.js'); ?>"></script>
+        <!-- datepicker -->
+        <script src="<?php echo base_url('public_folder/js/bootstrap-datepicker.js'); ?>"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -324,27 +327,27 @@
                     </ol>
                 </section>
                 
-                <div id="avisos">
+<div id="avisos">
     <?php
 
-      if($this->session->flashdata('success')):
-      echo '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-      '.$this->session->flashdata('success').'</div>';
-      endif;
+        if($this->session->flashdata('success')):
+        echo '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+        '.$this->session->flashdata('success').'</div>';
+        endif;
 
-      if($this->session->flashdata('warning')):
-      echo '<div class="alert alert-warning"  role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-      '.$this->session->flashdata('warning').'</div>';
-      endif;
+        if($this->session->flashdata('warning')):
+        echo '<div class="alert alert-warning"  role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+        '.$this->session->flashdata('warning').'</div>';
+        endif;
 
-      if($this->session->flashdata('error')):
-      echo '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-      '.$this->session->flashdata('error').'</div>';
-      endif;
+        if($this->session->flashdata('error')):
+        echo '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
+        '.$this->session->flashdata('error').'</div>';
+        endif;
 
     ?>
 
-    </div>
+</div>
 
                 <!-- Main content -->
                 <section class="content">
@@ -368,7 +371,8 @@
         <script src="<?php echo base_url('public_folder/js/backend.js'); ?>"></script>
         <!-- Bootstrap -->
         <script src="<?php echo base_url('public_folder/js/bootstrap.js'); ?>"></script>
-
+        
+        
         <!-- modal confirm -->
         <script src="<?php echo base_url('public_folder/js/bootbox.min.js'); ?>"></script>
 
@@ -396,15 +400,18 @@
             });
         </script>
         <script>
-        window.setTimeout(function() { $(".alert-success").alert('close'); }, 6000);
-        window.setTimeout(function() { $(".alert-warning").alert('close'); }, 6000);
-        window.setTimeout(function() { $(".alert-danger").alert('close'); }, 6000);
+        window.setTimeout(function() { $(".alert-success").alert('close'); }, 4000);
+        window.setTimeout(function() { $(".alert-warning").alert('close'); }, 4000);
+        window.setTimeout(function() { $(".alert-danger").alert('close'); }, 4000);
+        /*
+
         $('#fecha_desde').datepicker({
           format: 'dd-mm-yyyy',
         });
         $('#fecha_hasta').datepicker({
           format: 'dd-mm-yyyy',
         });
+        */
         </script>
 
     </body>

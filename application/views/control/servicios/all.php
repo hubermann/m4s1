@@ -3,27 +3,38 @@
 
 <?php 
 if(count($query->result())){
-	echo '<table class="table table-striped">';
+	echo '<table class="table table-striped">
+        <tr>
+
+    <td>Nombre</td>
+    <td>Icono</td>
+    <td>Opciones</td>
+  
+
+</tr>
+
+
+    ';
 	foreach ($query->result() as $row):
 
 		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
+        $icono="";
+        if($row->filename!=""){
+            $icono = '<img src="'.base_url('images-servicios/'.$row->filename).'" width="100" />';
+        }
+        
 
 		echo '<tr id="row'.$row->id.'">';
-echo '<td>'.$row->nombre.' </td>';
-#echo '<td>'.$row->filename.' </td>';
-
-		if($row->filename){
-		echo '<td><img src="'.base_url('images-servicios/'.$row->filename).'" width="100" /></td>';
-		}else{
-			echo "<td></td>";
-		}
+        echo '<td id="titulo'.$row->id.'">'.$row->nombre.' </td>';
+        echo '<td>'.$icono.' </td>';
+    
 
 		echo '</td>';
 
 		echo '<td> 
 		<div class="btn-group">
-		<a class="btn btn-small" onclick="confirm_delete('.$row->id.')" href="'.base_url('control/servicios/delete_comfirm/'.$row->id.'').'"><i class="fa fa-trash-o"></i></a>
-		<a class="btn btn-small" href="'.base_url('control/servicios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
+		  <a onclick="confirm_delete('.$row->id.', \'servicios\', \'http://localhost/masisa/control/servicios/soft_delete\')" class="btn btn-small"><i class="fa fa-trash-o"></i></a>
+		<a class="btn btn-small" href="'.base_url('control/servicios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a><a class="btn btn-small" href="'.base_url('control/servicios/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>		
 		<!--<a class="btn btn-small" href="'.base_url('control/servicios/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
 		</div>
 		</td>';
@@ -45,13 +56,13 @@ echo '<td>'.$row->nombre.' </td>';
 
 
 <script type="text/javascript">
-	function confirm_delete(id){
-		var titulo = $('#titulo'+id).html();
-            bootbox.confirm("<h4 >Seguro desea eliminar el evento: "+titulo+"</h4>", function(result) {
+    function confirm_delete(id){
+        var titulo = $('#titulo'+id).html();
+            bootbox.confirm("<h4 >Seguro desea eliminar el item: "+titulo+"</h4>", function(result) {
                 if(result==true){
                     //soft delete
 
-					var datos = {idevento:id}
+                    var datos = {idevento:id}
                     $.ajax({
                         url: "<?php echo base_url('control/eventos/soft_delete'); ?>",
                         type: "post",
@@ -61,9 +72,9 @@ echo '<td>'.$row->nombre.' </td>';
                             //alert("success"+data);
 
                             if(data["status"] == 1){
-                            	
-                            	//$('#avisos').html('<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>Evento eliminado!</div>');
-                            	$('#row'+id).hide('slow');
+                                
+                                //$('#avisos').html('<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>Evento eliminado!</div>');
+                                $('#row'+id).hide('slow');
                             }
 
                             

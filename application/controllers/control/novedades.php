@@ -15,7 +15,10 @@ $this->load->library('session');
 if(! $this->session->userdata('logged_in')){
 redirect('dashboard');
 }
-
+if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('GMT');
+}
 
 
 }
@@ -95,18 +98,32 @@ if ($this->form_validation->run() === FALSE){
 	}else{
 
 		$ahora = date("Y-m-d");
+
+		list($dia, $mes, $anio) = explode("-", $this->input->post('fecha'));
+		$fecha = $anio."-".$mes."-".$dia;
+
+		$file  = $this->upload_image();
+		if($_FILES['filename']['size'] > 0){
+			if ( $file['status'] == 0 ){
+				$this->session->set_flashdata('error', $file['msg']);
+			}
+		}else{
+			$file['filename'] = '';
+		}
+
 		
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		$newnovedad = array( 
-		'fecha' => $this->input->post('fecha'), 
+		'fecha' => $fecha, 
 		'created_at' => $ahora, 
 		'updated_at' => $ahora, 
- 'titulo' => $this->input->post('titulo'), 
- 'descripcion' => $this->input->post('descripcion'), 
- 'tags' => $this->input->post('tags'), 
- 'slug' => $slug, 
-);
+		 'titulo' => $this->input->post('titulo'), 
+		 'descripcion' => $this->input->post('descripcion'), 
+		 'tags' => $this->input->post('tags'), 
+		 'slug' => $slug, 
+		 'filename' => $file['filename']
+		);
 		#save
 		$this->novedad->add_record($newnovedad);
 		$this->session->set_flashdata('success', 'novedad creado. <a href="novedades/detail/'.$this->db->insert_id().'">Ver</a>');
@@ -155,23 +172,46 @@ $this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
 		$data['query'] = $this->novedad->get_record($this->input->post('id'));
 		$this->load->view('control/control_layout', $data);
 	}else{	
+		if($_FILES['filename']['size'] > 0){
 
-	$this->load->helper('url');
+			$file  = $this->upload_image();
+
+			if ( $file['status'] != 0 )
+				{
+				//guardo
+				$novedad = $this->novedad->get_record($this->input->post('id'));
+					 $path = 'images-novedades/'.$novedad->filename;
+					 if(is_link($path)){
+						unlink($path);
+					 }
+				
+				
+				$data = array('filename' => $file['filename']);
+				$this->novedad->update_record($this->input->post('id'), $data);
+				}
+
+			}
+
+
+
+		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);	
 		$id=  $this->input->post('id');
 		$ahora = date("Y-m-d h:i:s");
+
+		list($dia, $mes, $anio) = explode("-", $this->input->post('fecha'));
+		$fecha = $anio."-".$mes."-".$dia;
+
+
 		$editednovedad = array(  
 			'updated_at' => $ahora, 
-'fecha' => $this->input->post('fecha'),
+			'fecha' => $fecha,
+			'titulo' => $this->input->post('titulo'),
+			'descripcion' => $this->input->post('descripcion'),
+			'tags' => $this->input->post('tags'),
+			'slug' => $slug,
+		);
 
-'titulo' => $this->input->post('titulo'),
-
-'descripcion' => $this->input->post('descripcion'),
-
-'tags' => $this->input->post('tags'),
-
-'slug' => $slug,
-);
 		#save
 		$this->session->set_flashdata('success', 'novedad Actualizado!');
 		$this->novedad->update_record($id, $editednovedad);
@@ -335,6 +375,68 @@ public function upload_file(){
 		
 	return $file;
 }
+
+/*******  FILE ADJUNTO  ********/
+public function upload_image(){
+
+	//1 = OK - 0 = Failure
+	$file = array('status' => '', 'filename' => '', 'msg' => '' );
+
+	//check ext.
+	$file_extensions_allowed = array('image/gif', 'image/png', 'image/jpeg', 'image/jpg');
+	$exts_humano = array('gif', 'png', 'jpeg', 'jpg');
+	$exts_humano = implode(', ',$exts_humano);
+	$ext = $_FILES['filename']['type'];
+	#$ext = strtolower($ext);
+	if(!in_array($ext, $file_extensions_allowed)){
+		$exts = implode(', ',$file_extensions_allowed);
+
+		$file['msg'] .="<p>".$_FILES['filename']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
+
+	}else{
+		include(APPPATH.'libraries/class.upload.php');
+		$yukle = new upload;
+		$yukle->set_max_size(1900000);
+		$yukle->set_directory('./images-novedades');
+		$yukle->set_tmp_name($_FILES['filename']['tmp_name']);
+		$yukle->set_file_size($_FILES['filename']['size']);
+		$yukle->set_file_type($_FILES['filename']['type']);
+		$random = substr(md5(rand()),0,6);
+		$name_whitout_whitespaces = str_replace(" ","-",$_FILES['filename']['name']);
+		$imagname=''.$random.'_'.$name_whitout_whitespaces;
+		#$thumbname='tn_'.$imagname;
+		$yukle->set_file_name($imagname);
+
+
+		$yukle->start_copy();
+
+
+		if($yukle->is_ok()){
+			#$yukle->resize(600,0);
+			#$yukle->set_thumbnail_name('tn_'.$random.'_'.$name_whitout_whitespaces);
+			#$yukle->create_thumbnail();
+			#$yukle->set_thumbnail_size(180, 0);
+
+			//UPLOAD ok
+			$file['filename'] = $imagname;
+			$file['status'] = 1;
+		}
+		else{
+			$file['status'] = 0 ;
+			$file['msg'] = 'Error al subir archivo';
+		}
+
+		//clean
+		$yukle->set_tmp_name('');
+		$yukle->set_file_size('');
+		$yukle->set_file_type('');
+		$imagname='';
+	}//fin if(extencion)	
+
+
+	return $file;
+}
+
 
 } //end class
 

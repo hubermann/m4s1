@@ -34,21 +34,25 @@ if(!empty($novedades->result())){
 
 	foreach ($novedades->result() as $novedad) {
 		
+		$imagen = "";
+		if(!empty($novedad->filename)){$imagen ='<img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." />';}
+		
+		
 		echo '
-		<div class="col-md-6">
+			<div class="col-md-6">
+
+			<div class="thumbnail">
+			'.$imagen.'
+			<div class="caption post-content">
+
+			<a href="'.base_url('novedades/'.$novedad->slug.'/'.$novedad->id).'"><h3>'.$novedad->titulo.'</h3></a> 
+
+			</div>
+			</div>
+
+			</div>
+		';
 		
-		<div class="thumbnail">
-		<img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." />
-		<div class="caption post-content">
-
-		<a href="#"><h3>'.$novedad->titulo.'.</h3></a>
-
-		</div>
-		</div>
-		
-	</div>
-	';
-
 
 	}
 
@@ -56,24 +60,6 @@ if(!empty($novedades->result())){
 ?>
 
 
-	
-	
-	<div class="col-md-6">
-		
-		<div class="thumbnail">
-			<img src="http://www.bergoiata.org/fe/divers14/46_sfract2.800x600.jpg" alt="..." />
-			<div class="caption post-content">
-
-			<a href="#"><h3>Lorem ipsum dolor sit amet</h3></a> 
-
-			</div>
-		</div>
-
-	</div>
-	
-
-	
-	
 	
 
 	

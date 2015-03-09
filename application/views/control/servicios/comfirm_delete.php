@@ -9,7 +9,7 @@ echo '<fieldset>'.form_hidden('id', $query->id);
  <!-- <p>Categoria id: <?php #echo $nombre_categoria = $this->categoria->traer_nombre($query->categoria_id); ?></p> -->
 
  <p>Nombre: <?php echo $query->nombre; ?></p>
- <p>Filename: <?php echo $query->filename; ?></p>
+ <p>Slug: <?php echo $query->slug; ?></p>
 
 <!--  -->
 <div class="control-group">

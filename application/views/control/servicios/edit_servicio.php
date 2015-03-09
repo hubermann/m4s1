@@ -8,7 +8,8 @@
 	reader.readAsDataURL(input.files[0]);
 	}
 }
-</script><?php  
+</script>
+<?php  
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_servicio');
 echo form_open_multipart(base_url('control/servicios/update/'),$attributes);
 
@@ -53,9 +54,9 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('nombre','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-	<!-- Text input-->
+				<!-- Text input-->
 <div class="control-group">
-	<label class="control-label">Imagen</label>
+	<label class="control-label">Icono</label>
 	<div class="controls">
 	<div id="previewImg">
 	<?php if($query->filename){
@@ -67,7 +68,6 @@ echo form_hidden('id', $query->id);
 	<?php echo form_error('filename','<p class="error">', '</p>'); ?>
 	</div>
 </div>
-
 
 <div class="control-group">
 <label class="control-label"></label>

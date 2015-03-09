@@ -23,24 +23,43 @@
 
 <div class="row">
 	<div class="col-lg-12">
-	<img src="http://www.red-eng.com/UI/Images/CaseStudies/Nakheel-1200x400.jpg" alt="..." class="img-responsive">
-		<div class="caption post-content">
-			<h3>Lorem ipsum dolor sit amet</h3>
-			<p>2012/12/12</p>
+<?php 
+
+	$imagen = "";
+	if(!empty($novedad->filename)){$imagen= '<img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="'.$novedad->titulo.'" class="img-responsive">';}
+
+	echo $imagen;
+
+	list($anio, $mes, $dia) = explode("-", $novedad->fecha);
+	$fecha = $dia."-".$mes."-".$anio;
+
+
+	echo '
+	<div class="caption post-content">
+			<h3>'.$novedad->titulo.'</h3>
+			<p>'.$fecha.'</p>
 		</div>
 	</div>
-</div>
 
-<div class="row" id="contenido_novedad">
+	</div>
+
+	<div class="row" id="contenido_novedad">
 	<div class="col-lg-12">
 	<br>
+
 	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus excepturi doloremque, eligendi veniam ab nam dolorem nesciunt blanditiis, aut incidunt rerum unde earum quae ducimus repellat explicabo ea recusandae minima.
+		'.$novedad->descripcion.'
 	
 	</p>
 
 	</div>
 </div>
+	';
+?>
+
+	
+
+	
 
 </section><!-- end #main_content -->
 
