@@ -32,6 +32,17 @@ class Imagenes_producto extends CI_Model{
 
 	}
 
+	//all by publiccacion
+	public function traer_una($id_producto){
+
+		$this->db->where('producto_id' ,$id_producto);
+					$this->db->limit(1);
+					$c = $this->db->get('imagenes_productos');
+
+					return $c->row('filename');
+
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);

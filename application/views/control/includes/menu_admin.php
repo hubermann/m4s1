@@ -65,6 +65,7 @@ if($this->uri->segment(2)=="servicios"){
 	<ul class="treeview-menu">
 	<li><a href="'.base_url('control/servicios').'"><i class="fa fa-angle-double-right"></i> Ver Todos</a></li>
 	<li><a href="'.base_url('control/servicios/form_new').'"><i class="fa fa-angle-double-right"></i> Crear nuevo</a></li>
+	<li><a href="'.base_url('control/slider_servicios/imagenes/1').'"><i class="fa fa-angle-double-right"></i> Imagenes</a></li>
 	</ul>
 	</li>
 		';

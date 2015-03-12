@@ -25,30 +25,29 @@
 			VIDEO HERE
 		</div>
 		<div class="col-md-6 no-gutter" id="grupo_productos">
-			<div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
-			<div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
-      <div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
-      <div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
-      <div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
-      <div class="col-md-6">
-        <img src="<?php echo base_url('public_folder/ejemplos/prod_home.png'); ?>" alt="" class="img-responsive">
-        <div class="caption post-content"><hgroup><h3>Placas <br>de madera</h3></hgroup></div>
-      </div>
+			
+      <?php  
+
+      if($grupo_productos){
+        foreach ($grupo_productos->result() as $producto) {
+          # code...
+          echo '
+              <div class="col-md-6">
+              <img src="'.base_url('images-productos/'.$producto->filename).'" alt="" class="img-responsive">
+              <div class="caption post-content"><hgroup><h3><a href="'.base_url('producto-detalle/'.$producto->id).'">'.$producto->titulo.'</a></h3></hgroup></div>
+            </div>
+          ';
+          
+        }
+      
+      }
+
+
+      ?>
+      
+			
+
+
 		</div>
 	</div><!-- end video y thumbs productos -->
 	
@@ -61,7 +60,7 @@
 	</div><!-- end titulo Servicios -->
 	<div class="row seven-cols no-gutters"><!-- thumbs Servicios  -->
 			<?php  
-        if(!empty($servicios->result())){
+        if($servicios->result()){
 
           foreach ($servicios->result() as $servicio) {
             
@@ -80,76 +79,114 @@
 			<h2 class="orange">Novedades</h2>
 			<div class="line_orange"></div>
 <div id="carousel-novedades" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+
+<!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-novedades" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-novedades" data-slide-to="1"></li>
+    <li data-target="#carousel-novedades" data-slide-to="2"></li>
   </ol>
+
+<?php  
+  if($novedades->result()){
+
+    $count_list=1;
+    $items_novedad="";
+
+
+    foreach ($novedades->result() as $novedad) {
+      
+      $clase_para_activo = "";
+    if($count_list==1){$clase_para_activo = "active";}//al primerlo lo pongo activo la primera vez
+      
+      $items_novedad .= '<div class="item '.$clase_para_activo.'">
+      <img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." class="responsive">
+      <div class="carousel-caption">
+        '.$novedad->titulo.'
+      </div>
+    </div>';
+    $count_list++;
+
+    }
+
+  }
+?>
+
+
+  
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://www.red-eng.com/UI/Images/CaseStudies/Nakheel-1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        otro lorem ipsum
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://www.amerondiewelle.com/content/user/29/images/08_PHE/Header%20(1200%20x%20400)/Meeting/phe_meetings_1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        lorem ipsum
-      </div>
-    </div>
+    
+
+    <?php echo $items_novedad; ?>
     
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-novedades" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel-novedades" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
 		</div><!-- fin novedades -->
 
-		<div class="col-md-6"><!-- productos -->
+<?php  
+$items_producto=""; 
+  if($productos->result()){
+
+    $count_list=1;
+    $items_producto="";
+
+
+    foreach ($productos->result() as $producto) {
+      
+      $una_imagen_producto = $this->imagenes_producto->traer_una($producto->id);
+     
+      $clase_para_activo = "";
+    if($count_list==1){$clase_para_activo = "active";}//al primerlo lo pongo activo la primera vez
+      
+      $items_producto .= '<div class="item '.$clase_para_activo.'">
+      <img src="'.base_url('images-productos/'.$una_imagen_producto).'" alt="..." class="responsive">
+      <div class="carousel-caption">
+        '.$producto->titulo.'
+      </div>
+    </div>';
+    $count_list++;
+    $una_imagen_producto ="";
+    }
+
+  }
+  ?>
+
+
+<div class="col-md-6"><!-- productos -->
 			<h2 class="orange">Productos destacados</h2>
 			<div class="line_orange"></div>
 			<div id="carousel-productos" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-productos" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-productos" data-slide-to="1"></li>
+    <li data-target="#carousel-productos" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://www.red-eng.com/UI/Images/CaseStudies/Nakheel-1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        otro lorem ipsum
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://www.amerondiewelle.com/content/user/29/images/08_PHE/Header%20(1200%20x%20400)/Meeting/phe_meetings_1200x400.jpg" alt="..." class="responsive">
-      <div class="carousel-caption">
-        lorem ipsum
-      </div>
-    </div>
+    <?php echo $items_producto; ?>
     
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-productos" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel-productos" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>

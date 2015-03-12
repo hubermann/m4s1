@@ -38,7 +38,7 @@ echo form_hidden('capacitacion[id]');
 			<div class="control-group">
 			<label class="control-label">Fecha</label>
 			<div class="controls">
-			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" />
+			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" id="fecha" />
 			<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
@@ -73,3 +73,11 @@ echo form_hidden('capacitacion[id]');
 <?php echo form_close(); ?>
 
 </div>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'descripcion');
+	$('#fecha').datepicker({
+      format: 'dd-mm-yyyy',
+    });
+
+</script>

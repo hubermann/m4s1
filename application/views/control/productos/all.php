@@ -7,11 +7,14 @@ if(count($query->result())){
 	foreach ($query->result() as $row):
 
 		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
-
+        $icono="";
+        if($row->filename!=""){
+            $icono = '<img src="'.base_url('images-productos/'.$row->filename).'" width="100" />';
+        }
 		echo '<tr id="row'.$row->id.'">';
         echo '<td id="titulo'.$row->id.'">'.$row->titulo.' </td>';
         echo '<td>'.$row->descripcion.' </td>';
-        #echo '<td>'.$row->tags.' </td>';
+        echo '<td>'. $icono.' </td>';
 
 		echo '</td>';
 

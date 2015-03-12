@@ -16,6 +16,11 @@ if(! $this->session->userdata('logged_in')){
 redirect('dashboard');
 }
 
+if( ! ini_get('date.timezone') )
+{
+    date_default_timezone_set('GMT');
+}
+
 
 
 }
@@ -96,10 +101,16 @@ if ($this->form_validation->run() === FALSE){
 		/*
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
-		*/$newcapacitacion = array( 'fecha' => $this->input->post('fecha'), 
- 'titulo' => $this->input->post('titulo'), 
- 'descripcion' => $this->input->post('descripcion'), 
-);
+		*/
+
+		list($dia, $mes, $anio) = explode("-", $this->input->post('fecha'));
+		$fecha = $anio."-".$mes."-".$dia;
+
+		$newcapacitacion = array( 
+		 'fecha' => $fecha, 
+		 'titulo' => $this->input->post('titulo'), 
+		 'descripcion' => $this->input->post('descripcion'), 
+		);
 		#save
 		$this->capacitacion->add_record($newcapacitacion);
 		$this->session->set_flashdata('success', 'capacitacion creado. <a href="capacitaciones/detail/'.$this->db->insert_id().'">Ver</a>');
@@ -145,9 +156,10 @@ $this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
 		$this->load->view('control/control_layout', $data);
 	}else{		
 		$id=  $this->input->post('id');
-
+		list($dia, $mes, $anio) = explode("-", $this->input->post('fecha'));
+		$fecha = $anio."-".$mes."-".$dia;
 		$editedcapacitacion = array(  
-'fecha' => $this->input->post('fecha'),
+'fecha' => $fecha,
 
 'titulo' => $this->input->post('titulo'),
 

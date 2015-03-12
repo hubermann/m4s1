@@ -1,3 +1,15 @@
+<script>
+	function show_preview(input) {
+	if (input.files && input.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function (e) {
+	$('#previewImg').html('<img src="'+e.target.result+'" width="140" />' );
+	}
+	reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
+
 <?php  
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_producto');
 echo form_open_multipart(base_url('control/productos/update/'),$attributes);
@@ -90,6 +102,20 @@ echo form_hidden('id', $query->id);
 			</div>
 			</div>
 
+
+<div class="control-group">
+	<label class="control-label">Portada <span class="small">(Nombre para la pagina de inicio )</span></label>
+	<div class="controls">
+	<div id="previewImg">
+	<?php if($query->filename){
+	echo '<p><img src="'.base_url('images-productos/'.$query->filename).'" width="140" /></p>';
+	} ?>
+
+</div>
+	<input value="<?php echo set_value('filename'); ?>" type="file" class="form-control" name="filename" onchange="show_preview(this)"/>
+	<?php echo form_error('filename','<p class="error">', '</p>'); ?>
+	</div>
+</div>
 			
 
 <div class="control-group">

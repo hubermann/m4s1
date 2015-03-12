@@ -10,7 +10,7 @@
 				<li><a href="<?php echo base_url('grupo-de-productos'); ?>">Grupo de productos</a></li>
 				<li><a href="<?php echo base_url('sucursales'); ?>">Sucursales</a></li>
 				<li><a href="<?php echo base_url('capacitaciones'); ?>">Capacitaciones</a></li>
-				<li><a href="<?php echo base_url('novedades'); ?>">Novedades</a></li>
+				<!-- <li><a href="<?php echo base_url('novedades'); ?>">Novedades</a></li> -->
 			</ul>
 		</nav>
 	</div>

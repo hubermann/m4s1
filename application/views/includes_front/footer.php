@@ -52,8 +52,7 @@
 			<p>Buenos Aires - Argentina</p>
 			<p>Tel/Fax: 4210-0121 / 4881</p>
 			<div id="logos_footer">
-				<img src="http://placehold.it/130x60" alt="..." class="responsive">
-				<img src="http://placehold.it/80x60" alt="..." class="responsive">
+				<img src="<?php echo base_url('public_folder/img/logos-footer.png'); ?>" alt="..." class="responsive">
 			</div>
 		</div>
 	</div>

@@ -5,13 +5,16 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 
 	  parent::__construct();
-	  $this->load->model( array('producto','novedad','servicio','laempresam','sucursal', 'imagenes_producto','imagenes_servicio','imagenes_novedad', 'imagenes_laempresa') );
+	  $this->load->model( array('producto','imagenes_slider_servicio','novedad','servicio','capacitacion','laempresam','sucursal', 'imagenes_producto','imagenes_servicio','imagenes_novedad', 'imagenes_laempresa') );
 	  $this->load->helper('url');
 	}
 
 	public function index()
 	{	
 		$data['servicios'] = $this->servicio->get_records_front();
+		$data['novedades'] = $this->novedad->get_records_front();
+		$data['productos'] = $this->producto->get_records_front();
+		$data['grupo_productos'] = $this->producto->get_grupo_productos();
 		$this->load->view('inicio', $data);
 	}
 
@@ -41,7 +44,8 @@ class Welcome extends CI_Controller {
 
 	public function servicios()
 	{	
-		$data['servicios'] = $this->servicio->get_records(10,1);
+		$data['sliders_servicios'] = $this->imagenes_slider_servicio->get_records(10,0);
+		$data['servicios'] = $this->servicio->get_records(10,0);
 		$this->load->view('servicios', $data);
 	}
 
@@ -69,6 +73,11 @@ class Welcome extends CI_Controller {
 	{	
 		$data['sucursales'] = $this->sucursal->get_records(0,3);
 		$this->load->view('sucursales', $data);
+	}
+
+	public function capacitaciones()
+	{	
+		$this->load->view('capacitaciones');
 	}
 }
 

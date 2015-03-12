@@ -14,6 +14,29 @@ class Capacitacion extends CI_Model{
 
 	}
 
+	//all
+	/*
+	public function get_ultimo(){
+		$this->db->select()->from('capacitaciones')->where('status', 0)->order_by('id','DESC')->limit(1);
+		return $this->db->get();
+
+	}*/
+	public function get_by_date($year='2014', $month){
+		$this->db->select()->from('capacitaciones')
+		->where('YEAR(fecha)', $year, FALSE)
+		->where('MONTH(fecha)', $month, FALSE);
+		
+		return $this->db->get();
+
+	}
+
+	//all
+	public function get_records_front(){
+		$this->db->select()->from('capacitaciones')->where('status', 0)->order_by('id','ASC');
+		return $this->db->get();
+
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);

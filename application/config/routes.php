@@ -27,6 +27,9 @@ $route['producto-detalle/(:num)'] = 'welcome/producto_detalle';
 $route['novedades'] = 'welcome/novedades';
 $route['novedades/(:any)/(:num)'] = 'welcome/novedades_detalle';
 $route['sucursales'] = 'welcome/sucursales';
+$route['capacitaciones'] = 'welcome/capacitaciones';
+$route['capacitaciones/(:any)'] = 'welcome/capacitaciones';
+
 
 
 

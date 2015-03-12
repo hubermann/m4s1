@@ -35,11 +35,19 @@ echo form_hidden('id', $query->id);
 </div>
 -->
 
+			<?php
+
+			list($anio, $mes, $dia) = explode("-", $query->fecha);
+			$fecha = $dia."-".$mes."-".$anio;
+
+			?>
+
+
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Fecha</label>
 			<div class="controls">
-			<input value="<?php echo $query->fecha; ?>" type="text" class="form-control" name="fecha" />
+			<input value="<?php echo $fecha; ?>" type="text" class="form-control" name="fecha" id="fecha" />
 			<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
@@ -72,3 +80,11 @@ echo form_hidden('id', $query->id);
 <?php echo form_close(); ?>
 
 </div>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'descripcion');
+	$('#fecha').datepicker({
+      format: 'dd-mm-yyyy',
+    });
+
+</script>

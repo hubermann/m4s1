@@ -9,6 +9,7 @@
 	}
 }
 </script>
+
 <?php  
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_servicio');

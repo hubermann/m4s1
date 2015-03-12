@@ -21,6 +21,11 @@ class Novedad extends CI_Model{
 
 	}
 
+	public function get_records_front(){
+		$this->db->select()->from('novedades')->where('status', 0)->order_by('id','DESC')->limit(3);
+		return $this->db->get();
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);
