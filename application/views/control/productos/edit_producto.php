@@ -63,14 +63,7 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('descripcion','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input
-			<div class="control-group">
-			<label class="control-label">Tags</label>
-			<div class="controls">
-			<input value="<?php echo $query->tags; ?>" type="text" class="form-control" name="tags" />
-			<?php echo form_error('tags','<p class="error">', '</p>'); ?>
-			</div>
-			</div> -->
+			
 
 			<!-- Text input-->
 			<div class="checkbox">

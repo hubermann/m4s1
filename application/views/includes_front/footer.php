@@ -4,25 +4,26 @@
 			<h4>Galeria de imagenes</h4>
 			<div id="galeria_footer">
 				
-				
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-				
-				
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-				
-				
-					<img src="http://placehold.it/80x70" alt="..." >
-					<img src="http://placehold.it/80x70" alt="..." >
-					<img src="http://placehold.it/80x70" alt="..." class="responsive">
-				
+				<?php  
 
+					$imagenes = $this->imagenes_galeria->get_footer();
+
+					if(!empty($imagenes)){
+
+						foreach ($imagenes as $imagen) {
+							echo '
+							<div class="thumb_footer">
+								<a href="'.base_url('imagenes').'"><img src="'.base_url('images-galerias/'.$imagen->filename).'" width="150" alt="..." class="responsive"></a>
+							</div>
+							';
+						}
+					}
+				?>
 
 			</div>
 		</div>
+
+		
 		<div class="col-md-3">
 			<h4>Productos</h4>
 			<ul id="footer_productos_links">

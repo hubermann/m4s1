@@ -29,7 +29,7 @@
       <?php  
 
       if($grupo_productos){
-        foreach ($grupo_productos->result() as $producto) {
+        foreach ($grupo_productos as $producto) {
           # code...
           echo '
               <div class="col-md-6">
@@ -75,7 +75,7 @@
 	     </div><!-- end thumbs Servicios -->
 
 	<div class="row"><!-- slider novedades y productos -->
-		<div class="col-md-6"><!-- novedades -->
+		<div class="col-md-6 col-lg-6"><!-- novedades -->
 			<h2 class="orange">Novedades</h2>
 			<div class="line_orange"></div>
 <div id="carousel-novedades" class="carousel slide" data-ride="carousel">
@@ -88,19 +88,19 @@
   </ol>
 
 <?php  
-  if($novedades->result()){
+  if($novedades){
 
     $count_list=1;
     $items_novedad="";
 
 
-    foreach ($novedades->result() as $novedad) {
+    foreach ($novedades as $novedad) {
       
       $clase_para_activo = "";
     if($count_list==1){$clase_para_activo = "active";}//al primerlo lo pongo activo la primera vez
       
       $items_novedad .= '<div class="item '.$clase_para_activo.'">
-      <img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." class="responsive">
+      <img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." class="col-md-6 col-lg-6 col-xs-12" >
       <div class="carousel-caption">
         '.$novedad->titulo.'
       </div>
@@ -137,13 +137,13 @@
 
 <?php  
 $items_producto=""; 
-  if($productos->result()){
+  if($productos){
 
     $count_list=1;
     $items_producto="";
 
 
-    foreach ($productos->result() as $producto) {
+    foreach ($productos as $producto) {
       
       $una_imagen_producto = $this->imagenes_producto->traer_una($producto->id);
      
@@ -151,7 +151,7 @@ $items_producto="";
     if($count_list==1){$clase_para_activo = "active";}//al primerlo lo pongo activo la primera vez
       
       $items_producto .= '<div class="item '.$clase_para_activo.'">
-      <img src="'.base_url('images-productos/'.$una_imagen_producto).'" alt="..." class="responsive">
+      <img src="'.base_url('images-productos/'.$una_imagen_producto).'" class="col-md-6 col-lg-6 col-xs-12" >
       <div class="carousel-caption">
         '.$producto->titulo.'
       </div>
@@ -164,7 +164,7 @@ $items_producto="";
   ?>
 
 
-<div class="col-md-6"><!-- productos -->
+<div class="col-md-6 col-lg-6"><!-- productos -->
 			<h2 class="orange">Productos destacados</h2>
 			<div class="line_orange"></div>
 			<div id="carousel-productos" class="carousel slide" data-ride="carousel">

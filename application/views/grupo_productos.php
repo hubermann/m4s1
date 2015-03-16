@@ -12,7 +12,7 @@
 	<script src="<?php echo base_url('public_folder/js/bootstrap.js'); ?>"></script>
 	
 </head>
-<body id="servicio_detalle">
+<body id="grupo_de_productos">
 
 <?php include_once('includes_front/header.php'); ?>
 
@@ -33,9 +33,9 @@
 	
 <?php  
 
-if($productos->result()){
+if($productos){
 
-	foreach ($productos->result() as $producto) {
+	foreach ($productos as $producto) {
 		# traigo las imagenes para armar el slider
 		
 		$imagenes_producto=$this->imagenes_producto->imagenes_producto($producto->id);

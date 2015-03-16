@@ -1,4 +1,3 @@
-
 <ul class="sidebar-menu">
 <?php  
 ######## novedades
@@ -25,8 +24,6 @@ if($this->uri->segment(2)=="novedades"){
 	    </li>
 		';
 	}
-
-
 ######## laempresa
 if($this->uri->segment(2)=="laempresa"){
 	echo '
@@ -39,7 +36,6 @@ if($this->uri->segment(2)=="laempresa"){
 	<ul class="treeview-menu">
 	<li><a href="'.base_url('control/laempresa').'"><i class="fa fa-angle-double-right"></i> Informacion</a></li>
 	<li><a href="'.base_url('control/laempresa/imagenes/1').'"><i class="fa fa-angle-double-right"></i> Imagenes</a></li>
-
 	</ul>
 	</li>
 		';
@@ -52,6 +48,32 @@ if($this->uri->segment(2)=="laempresa"){
 	    </li>
 		';
 	}
+
+	######## galeria
+if($this->uri->segment(2)=="galerias"){
+	echo '
+	<!-- links galerias -->
+	<li class="treeview active">
+	<a href="#">
+	<i class="fa fa-bar-chart-o"></i>
+	<span>Galeria</span></a>
+	<i class="fa fa-angle-left pull-right"></i>
+	<ul class="treeview-menu">
+<!-- 	<li><a href="'.base_url('control/galerias').'"><i class="fa fa-angle-double-right"></i> Informacion</a></li> -->
+	<li><a href="'.base_url('control/galerias/imagenes/1').'"><i class="fa fa-angle-double-right"></i> Imagenes</a></li>
+	</ul>
+	</li>
+		';
+	}else{
+		echo '
+		<li>
+	        <a href="'.base_url('control/galerias').'">
+	            <i class="fa fa-dashboard"></i> <span>La empresa</span>
+	        </a>
+	    </li>
+		';
+	}
+
 
 ##### servicios
 if($this->uri->segment(2)=="servicios"){
@@ -78,7 +100,6 @@ if($this->uri->segment(2)=="servicios"){
 	    </li>
 		';
 	}
-
 ######## sucursales
 if($this->uri->segment(2)=="sucursales"){
 	echo '
@@ -103,7 +124,6 @@ if($this->uri->segment(2)=="sucursales"){
 	    </li>
 		';
 	}
-
 ######## capacitaciones
 if($this->uri->segment(2)=="capacitaciones"){
 	echo '
@@ -128,9 +148,6 @@ if($this->uri->segment(2)=="capacitaciones"){
 	    </li>
 		';
 	}
-
-
-
 ##### productos
 if($this->uri->segment(2)=="productos"){
 	echo '
@@ -172,4 +189,3 @@ if($this->uri->segment(2)=="productos"){
 </li>
     
   </ul>
-  

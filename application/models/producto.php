@@ -10,7 +10,8 @@ class Producto extends CI_Model{
 	//all
 	public function get_records($num,$start){
 		$this->db->select()->from('productos')->where('status', 0)->order_by('id','ASC')->limit($num,$start);
-		return $this->db->get();
+		$q= $this->db->get();
+		return $q->result();
 
 	}
 
@@ -19,14 +20,16 @@ class Producto extends CI_Model{
 		->where('status', 0)
 		->where('destacado', 1)
 		->order_by('id','DESC')->limit(3);
-		return $this->db->get();
+		$q= $this->db->get();
+		return $q->result();
 	}
 
 	public function get_grupo_productos(){
 		$this->db->select()->from('productos')
 		->where('status', 0)
 		->order_by('id','DESC')->limit(6);
-		return $this->db->get();
+		$q= $this->db->get();
+		return $q->result();
 	}
 
 

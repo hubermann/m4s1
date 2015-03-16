@@ -15,7 +15,7 @@ $route['control/productos/(:num)'] = 'control/productos/index/$';
 $route['control/sucursales/(:num)'] = 'control/sucursales/index/$';
 $route['control/capacitaciones/(:num)'] = 'control/capacitaciones/index/$';
 $route['control/novedades/(:num)'] = 'control/novedades/index/$';
-
+$route['control/galerias/(:num)'] = 'control/galerias/index/$';
 
 
 ###### FRONT ######
@@ -29,6 +29,7 @@ $route['novedades/(:any)/(:num)'] = 'welcome/novedades_detalle';
 $route['sucursales'] = 'welcome/sucursales';
 $route['capacitaciones'] = 'welcome/capacitaciones';
 $route['capacitaciones/(:any)'] = 'welcome/capacitaciones';
+$route['imagenes'] = 'welcome/galeria';
 
 
 

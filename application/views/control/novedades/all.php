@@ -2,7 +2,7 @@
 <h2><?php echo $title; ?></h2>
 
 <?php 
-if(count($query->result())){
+if(count($query)){
 	echo '<table class="table table-striped">
                 <tr>
                 <td>Fecha</td>
@@ -13,7 +13,7 @@ if(count($query->result())){
                 </tr>
                 ';
 
-	foreach ($query->result() as $row):
+	foreach ($query as $row):
 
     //texto descrip
     $texto_descrip = $row->descripcion;

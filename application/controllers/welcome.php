@@ -5,7 +5,7 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 
 	  parent::__construct();
-	  $this->load->model( array('producto','imagenes_slider_servicio','novedad','servicio','capacitacion','laempresam','sucursal', 'imagenes_producto','imagenes_servicio','imagenes_novedad', 'imagenes_laempresa') );
+	  $this->load->model( array('producto','imagenes_slider_servicio','imagenes_galeria','novedad','servicio','capacitacion','laempresam','sucursal', 'imagenes_producto','imagenes_servicio','imagenes_novedad', 'imagenes_laempresa') );
 	  $this->load->helper('url');
 	}
 
@@ -73,6 +73,12 @@ class Welcome extends CI_Controller {
 	{	
 		$data['sucursales'] = $this->sucursal->get_records(0,3);
 		$this->load->view('sucursales', $data);
+	}
+
+	public function galeria()
+	{	
+		$data['imagenes'] = $this->imagenes_galeria->get_front($galeria=1);
+		$this->load->view('galeria', $data);
 	}
 
 	public function capacitaciones()

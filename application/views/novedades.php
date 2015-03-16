@@ -30,9 +30,9 @@
 <div class="row"><!-- row #1 -->
 <?php  
 
-if(!empty($novedades->result())){
+if(!empty($novedades)){
 
-	foreach ($novedades->result() as $novedad) {
+	foreach ($novedades as $novedad) {
 		
 		$imagen = "";
 		if(!empty($novedad->filename)){$imagen ='<img src="'.base_url('images-novedades/'.$novedad->filename).'" alt="..." />';}
